@@ -1,0 +1,135 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="RsrfM_Zxao2R2rEm5n_1">
+    <mxGraphModel dx="1414" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-10" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="RTT data for ICB commissioned patients" vertex="1">
+          <mxGeometry height="60" width="120" x="30" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-9" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Calculate average referrals, removals and latest waiting list size." vertex="1">
+          <mxGeometry height="60" width="120" x="200" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-14" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Grow referrals by demographic growth +1% non-demographic growth" vertex="1">
+          <mxGeometry height="60" width="120" x="465" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-7" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-55" connectable="0" parent="0w4Bw08aXP06zKp0XSN5-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.4119" y="4" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-8" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-54" connectable="0" parent="0w4Bw08aXP06zKp0XSN5-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.444" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-4" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="Incude non-demographic growth?" vertex="1">
+          <mxGeometry height="100" width="100" x="350" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-15" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Grow referrals by demographic growth only" vertex="1">
+          <mxGeometry height="60" width="120" x="465" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-19" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Project capacity (removals) at latest 12-month median" vertex="1">
+          <mxGeometry height="60" width="120" x="610" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-17" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Calcualte sustainable queue size for target % within 18 weeks&lt;div&gt;(Little&#39;s Law)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="760" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-24" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Calculate relief capacity by target dates" vertex="1">
+          <mxGeometry height="60" width="120" x="920" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-20" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="430" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-58" connectable="0" parent="0w4Bw08aXP06zKp0XSN5-20" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=default;labelBackgroundColor=default;" value="&lt;span style=&quot;font-size: 12px; white-space: normal;&quot;&gt;Meet waiting times targets&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0037" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-22" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="340" as="sourcePoint" />
+            <mxPoint x="990" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-57" connectable="0" parent="0w4Bw08aXP06zKp0XSN5-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Do nothing" vertex="1">
+          <mxGeometry relative="1" x="-0.0167" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-18" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="Capacity Scenario" vertex="1">
+          <mxGeometry height="80" width="80" x="780" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-27" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-36" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-35">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Simulate queue using distribution of demand, and capacity projection" vertex="1">
+          <mxGeometry height="60" width="120" x="1020" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-23" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="325" />
+              <mxPoint x="1180" y="250" />
+              <mxPoint x="1080" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-59" connectable="0" parent="0w4Bw08aXP06zKp0XSN5-23" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=default;fontColor=default;" value="&lt;span style=&quot;font-size: 12px; white-space: normal;&quot;&gt;Monte Carlo Simulation (repeat 50 times)&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.1761" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-40" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Average queue sizes over Monte Carlo runs" vertex="1">
+          <mxGeometry height="60" width="120" x="1210" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-39" edge="1" parent="1" source="0w4Bw08aXP06zKp0XSN5-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="0w4Bw08aXP06zKp0XSN5-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-35" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Draw charts by trust and specialty" vertex="1">
+          <mxGeometry height="60" width="120" x="1210" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="0w4Bw08aXP06zKp0XSN5-37" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="RTT pathway closes (capacity) required." vertex="1">
+          <mxGeometry height="60" width="120" x="1390" y="354" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
