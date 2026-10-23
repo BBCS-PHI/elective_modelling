@@ -28,6 +28,8 @@ last_data_date <- as.Date('01/06/2026', '%d/%m/%Y')
                                 , '31/03/2029', '31/03/2030', '31/03/2031'), '%d/%m/%Y'),
             value = c(0.86, 0.93, 0.99, 0.99, 0.99),
             descr = c("diag86%", "diag93%", "diag99%", "diag99%", "diag99%")
+            #value = c(0.99, 0.99, 0.99, 0.99, 0.99),
+            #descr = c("diag99%", "diag99%", "diag99%", "diag99%", "diag99%")
         )
 
 # No Non-demo
@@ -115,6 +117,12 @@ df_list <- model_group  |>  #test_input %>%
     group_by(DiagnosticProcedure) %>%
     group_split()
 
+
+#### Error handle.  Data Quality issue, if referrals are negative (not possible)
+#### , due to balance calcualtions, set to zeo
+
+#model_group$Referrals <- ifelse(model_group$Referrals < 0, 0, model_group$Referrals)
+
 ## TF 300 in BSOL
 #df_list <- df_list[10]
 
@@ -124,6 +132,8 @@ df_list <- model_group  |>  #test_input %>%
 
 
 #.x <- df_list[[1]]
+
+#df_list <- df_list[1]
 
 #print(df_list[[1]][18,8], n = 30)
 
@@ -255,7 +265,7 @@ df_list <- map(df_list, function(.x) {
 
 })
 
-#View(df_list[[3]])
+#View(df_list[[1]])
 
 
 
@@ -550,7 +560,7 @@ plan(sequential)
 #502, x02,
 
 #print(df_list[[16]], n = 90)
-#View(df_list[[2]])
+#View(df_list[[1]])
 
 #.x <- df_list[[1]]
 #View(df_list[[1]])
@@ -571,7 +581,7 @@ df_list <- map(df_list, function(.x) {
 
 
 #print(df_list[[5]], n = 90)
-#View(df_list[[13]])
+#View(df_list[[1]])
 
 #a <- df_list[[1]]
 
@@ -674,7 +684,7 @@ mc_agg_rel <- map(mc_agg_rel, ~ data.frame(
     unlist(.x$queue_size)
 )
 )
-
+#write.csv(mc_agg_rel, "output/sandwell/audiology_check.csv")
 
 #plan(mirai_multisession, workers = 6)
 start_time <- Sys.time()
@@ -964,7 +974,7 @@ make_plot <- function(
 # --- Choose how to drive the target per plot ---
 
 ## Option A: provide an index per plot
-target_rows <- rep(30, n)  # one row index per dataset
+target_rows <- rep(18, n)  # one row index per dataset
 
 ## Option B: provide a date per plot (e.g., from existing target_dts$startdate)
 # target_dates <- target_dts$startdate[seq_len(n)]

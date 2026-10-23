@@ -3,7 +3,8 @@ library(tidyverse)
 source("_batch.R")
 
 # Testing full in light of Tineke's advice
-in_dt <- read_excel("data/extract_20260814.xlsx", .name_repair = "universal_quiet")
+#in_dt <- read_excel("data/extract_20260814.xlsx", .name_repair = "universal_quiet")
+in_dt <- read_excel("data/extract_20261019.xlsx", .name_repair = "universal_quiet")
 
 #Manual corrections
 #September, bsol other 170
@@ -31,6 +32,7 @@ in_dt <-
     in_dt |>
     filter(!(Specialty == '160' & Org_Code == "RBK"))
 
+
 # in_dt <-
 #     in_dt |>
 #     filter(!(Specialty == '430' & Org_Code == "RBK"))
@@ -39,6 +41,7 @@ in_dt <-
 in_dt <-
     in_dt |>
     filter(!(Specialty == '300' & Org_Code == "RL4"))
+
 
 
 in_dt <-
@@ -87,8 +90,10 @@ in_dt <-
     in_dt |>
     filter(!(Specialty == 'X03'& Org_Code == "Other"))
 
-
-
+# Just at 999
+in_dt <-
+    in_dt |>
+    filter((Specialty == '999'))
 
 
 # Need to add a year of x02 at rq3 prior to submission, or cut a year off
@@ -113,6 +118,63 @@ bsol_ryw <- filter(in_dt, Org_Code == "RYW") |> select(-Org_Code, -Org_Name) |> 
 bsol_other <- filter(in_dt, Org_Code == "Other" & Commissioner_Code == "15E") |> select(-Org_Code, -Org_Name) |> mutate(adjustment = 0.29)
 
 #bsol_other
+
+in_dt |>
+    filter(Org_Code %in% c('15E', 'D2P2L')) |>
+    group_by(Commissioner_Code, Specialty) |>
+    count() |>
+    View()
+
+
+availability_dt <- in_dt %>%
+   # filter(Org_Code %in% c('15E', 'D2P2L')) |>
+    mutate(start_date = as.Date(start_date)) %>%
+    distinct(#Commissioner_Code,
+             Org_Code, Specialty, start_date) %>%
+    mutate(populated = TRUE) %>%
+    complete(
+        #Commissioner_Code,
+        Org_Code,
+        Specialty,
+        start_date = seq(
+            min(start_date, na.rm = TRUE),
+            max(start_date, na.rm = TRUE),
+            by = "month"
+        ),
+        fill = list(populated = FALSE)
+    )
+
+ggplot(
+    availability_dt,
+    aes(x = start_date, y = Specialty, fill = populated)
+) +
+    geom_tile(colour = "white", linewidth = 0.15) +
+    facet_wrap(~ Org_Code) +
+    scale_fill_manual(
+        values = c(
+            "TRUE"  = "#2b8cbe",
+            "FALSE" = "#e34a33"
+        ),
+        labels = c(
+            "TRUE"  = "Populated",
+            "FALSE" = "Missing"
+        )
+    ) +
+    scale_x_date(
+        date_breaks = "3 months",
+        date_labels = "%b %y"
+    ) +
+    labs(
+        x = NULL,
+        y = "Specialty",
+        fill = NULL
+    ) +
+    theme_minimal() +
+    theme(
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid = element_blank(),
+        legend.position = "top"
+    )
 
 # in_bsol <-
 #     in_bsol |>
@@ -197,7 +259,7 @@ names(model_groups_list) <-  nms
 #purrr::map(model_groups_list,  ~wl_batch_func(.x, names(model_groups_list)))
 start <- Sys.time()
 for (i in 1:length(model_groups_list)){
-    wl_batch_func(model_groups_list[[i]], nms[i])
+    wl_batch_func(model_groups_list[[i]], nms[i], "output/oct19_demoonly")
 }
 end <- Sys.time()
 

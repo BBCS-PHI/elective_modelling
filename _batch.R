@@ -1,6 +1,6 @@
 
 
-wl_batch_func <- function(model_group, group_name){
+wl_batch_func <- function(model_group, group_name, out_path){
 
     require(tidyverse)
     require(fuzzyjoin)
@@ -22,54 +22,26 @@ wl_batch_func <- function(model_group, group_name){
 
 target_dts <-
     data.frame(
-        startdate = as.Date(c('01/07/2026', '01/04/2027', "01/04/2029"), '%d/%m/%Y'),
+        startdate = as.Date(c('01/09/2026', '01/04/2027', "01/04/2029"), '%d/%m/%Y'),
         enddate = as.Date(c('31/03/2027', '31/03/2029', "31/03/2031"), '%d/%m/%Y'),
         value = c(0.65, 0.92, 0.92),
         descr = c("RTT65%", "RTT92%", "RTT92%")
     )
 
 
-# No Non-demo
-# if(substr(group_name,1,2) == "bc"){
-#     # #bc
-#     population_growth <-
-#         tibble::tribble(
-#               ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
-#              #"01/09/2025", "31/03/2026",               1,     1254329,     1.013762439,
-#              "01/07/2026", "31/03/2027",     1.005597424,     1261350,     1.014112691,
-#              "01/04/2027", "31/03/2028",     1.011238882,     1268426,     1.014032883,
-#              "01/04/2028", "31/03/2029",     1.016872582,     1275493,     1.013953973,
-#              "01/04/2029", "31/03/2030",      1.02287851,     1283026,     1.014080133,
-#              "01/04/2030", "31/03/2031",     1.028903111,     1290583,     1.013893177
-#           )
-# } else {
-#     # Bsol
-#     population_growth <-
-#         tibble::tribble(
-#             ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
-#             #"01/09/2025", "31/03/2026",               1,     1590793,    0.991027558,
-#             #"01/03/2026", "31/03/2026",               1,     1590793,    0.991027558,
-#             "01/07/2026", "31/03/2027",        1.003309, 1596056.425,    0.991161751,
-#             "01/04/2027", "31/03/2028",        1.006733, 1601503.998,    0.991296965,
-#             "01/04/2028", "31/03/2029",        1.010701, 1607815.611,    0.991226216,
-#             "01/04/2029", "31/03/2030",        1.015318, 1615161.207,    0.991370238,
-#             "01/04/2030", "31/03/2031",        1.020006, 1622704.257,    0.991201425
-#         )
-# }
-
-# #+ 1% Non-demographic growth
+# # No Non-demo
 if(substr(group_name,1,2) == "bc"){
     # #bc
     population_growth <-
         tibble::tribble(
-            ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
-            #"01/09/2025", "31/03/2026",               1,     1254329,     1.013762439,
-            "01/07/2026", "31/03/2027",     1.015597424,     1261350,     1.014112691,
-            "01/04/2027", "31/03/2028",     1.021238882,     1268426,     1.014032883,
-            "01/04/2028", "31/03/2029",     1.026872582,     1275493,     1.013953973,
-            "01/04/2029", "31/03/2030",      1.03287851,     1283026,     1.014080133,
-            "01/04/2030", "31/03/2031",     1.038903111,     1290583,     1.013893177
-        )
+              ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
+             #"01/09/2025", "31/03/2026",               1,     1254329,     1.013762439,
+             "01/09/2026", "31/03/2027",     1.005597424,     1261350,     1.014112691,
+             "01/04/2027", "31/03/2028",     1.011238882,     1268426,     1.014032883,
+             "01/04/2028", "31/03/2029",     1.016872582,     1275493,     1.013953973,
+             "01/04/2029", "31/03/2030",      1.02287851,     1283026,     1.014080133,
+             "01/04/2030", "31/03/2031",     1.028903111,     1290583,     1.013893177
+          )
 } else {
     # Bsol
     population_growth <-
@@ -77,14 +49,63 @@ if(substr(group_name,1,2) == "bc"){
             ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
             #"01/09/2025", "31/03/2026",               1,     1590793,    0.991027558,
             #"01/03/2026", "31/03/2026",               1,     1590793,    0.991027558,
-            "01/07/2026", "31/03/2027",        1.013309, 1596056.425,    0.991161751,
-            "01/04/2027", "31/03/2028",        1.016733, 1601503.998,    0.991296965,
-            "01/04/2028", "31/03/2029",        1.020701, 1607815.611,    0.991226216,
-            "01/04/2029", "31/03/2030",        1.025318, 1615161.207,    0.991370238,
-            "01/04/2030", "31/03/2031",        1.030006, 1622704.257,    0.991201425
+            "01/09/2026", "31/03/2027",        1.003309, 1596056.425,    0.991161751,
+            "01/04/2027", "31/03/2028",        1.006733, 1601503.998,    0.991296965,
+            "01/04/2028", "31/03/2029",        1.010701, 1607815.611,    0.991226216,
+            "01/04/2029", "31/03/2030",        1.015318, 1615161.207,    0.991370238,
+            "01/04/2030", "31/03/2031",        1.020006, 1622704.257,    0.991201425
         )
 }
 
+# #+ 1% Non-demographic growth
+# if(substr(group_name,1,2) == "bc"){
+#     # #bc
+#     population_growth <-
+#         tibble::tribble(
+#             ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
+#             #"01/09/2025", "31/03/2026",               1,     1254329,     1.013762439,
+#             "01/09/2026", "31/03/2027",     1.015597424,     1261350,     1.014112691,
+#             "01/04/2027", "31/03/2028",     1.021238882,     1268426,     1.014032883,
+#             "01/04/2028", "31/03/2029",     1.026872582,     1275493,     1.013953973,
+#             "01/04/2029", "31/03/2030",      1.03287851,     1283026,     1.014080133,
+#             "01/04/2030", "31/03/2031",     1.038903111,     1290583,     1.013893177
+#         )
+# } else {
+#     # Bsol
+#     population_growth <-
+#         tibble::tribble(
+#             ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
+#             #"01/09/2025", "31/03/2026",               1,     1590793,    0.991027558,
+#             #"01/03/2026", "31/03/2026",               1,     1590793,    0.991027558,
+#             "01/09/2026", "31/03/2027",        1.013309, 1596056.425,    0.991161751,
+#             "01/04/2027", "31/03/2028",        1.016733, 1601503.998,    0.991296965,
+#             "01/04/2028", "31/03/2029",        1.020701, 1607815.611,    0.991226216,
+#             "01/04/2029", "31/03/2030",        1.025318, 1615161.207,    0.991370238,
+#             "01/04/2030", "31/03/2031",        1.030006, 1622704.257,    0.991201425
+#         )
+# }
+
+## straight 2 %
+# population_growth <-
+#         tibble::tribble(
+#             ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
+#             #"01/09/2025", "31/03/2026",               1,     1254329,     1.013762439,
+#             "01/09/2026", "31/03/2027",     1.02,     1261350,     1.014112691,
+#             "01/04/2027", "31/03/2028",     1.04,     1268426,     1.014032883,
+#             "01/04/2028", "31/03/2029",     1.06,     1275493,     1.013953973,
+#             "01/04/2029", "31/03/2030",      1.08,     1283026,     1.014080133,
+#             "01/04/2030", "31/03/2031",     1.10,     1290583,     1.013893177)
+
+## straight 0.5 %
+# population_growth <-
+#         tibble::tribble(
+#             ~start_date,    ~end_date, ~ratio_increase, ~population, ~adjustment_factor,
+#             #"01/09/2025", "31/03/2026",               1,     1254329,     1.013762439,
+#             "01/09/2026", "31/03/2027",     1.005,     1261350,     1.014112691,
+#             "01/04/2027", "31/03/2028",     1.01,     1268426,     1.014032883,
+#             "01/04/2028", "31/03/2029",     1.015,     1275493,     1.013953973,
+#             "01/04/2029", "31/03/2030",      1.02,     1283026,     1.014080133,
+#             "01/04/2030", "31/03/2031",     1.025,     1290583,     1.013893177)
 
 
 # Convert Year to Date
@@ -192,7 +213,7 @@ df_list <- map(df_list, ~ rbind(.x, df_append))
 #print(df_list[[1]], n = 50)
 
 last_row <- map(df_list, nrow)
-
+#View(df_list[[1]])
 #### Populate values logically ####
 ######## Populate values ####
 
@@ -800,12 +821,15 @@ gc()
 # Ensure list elements are named (used as sheet names)
 names(df_list) <- model_group |> distinct(Specialty) |> pull()
 
-write_xlsx(df_list, path = paste0("./output/sense_check_includes_nondemo/", group_name, ".xlsx"))
+#create directory
+dir.create(paste0("./", out_path))
+
+write_xlsx(df_list, path = paste0("./", out_path,"/", group_name, ".xlsx"))
 
 
 out_long <- bind_rows(df_list, .id = "source")
 
-write_csv(out_long, paste0("./output/sense_check_includes_nondemo/", group_name, "_long.csv"))
+write_csv(out_long, paste0("./", out_path,"/", group_name, "_long.csv"))
 
 
 
@@ -822,8 +846,9 @@ stopifnot(
 )
 
 # --- Output folder ---
-out_dir <- "output/sense_check_includes_nondemo"
+out_dir <- out_path
 dir.create(out_dir, showWarnings = FALSE)
+
 
 # Optional: annotation text per plot (or just keep single string)
 ann_labels <- rep("Target waiting list for 92%\nat 18 weeks 2028/29", n)
@@ -900,7 +925,7 @@ make_plot <- function(
     }
 
     hline <- suppressWarnings(as.numeric(df$target_wl[idx]))
-    cutoff_date <- as.Date('2026-07-01', "%Y-%m-%d")
+    cutoff_date <- as.Date('2026-09-01', "%Y-%m-%d")
     #if (!is.null(target_date)) coerce_date(target_date, fmt = target_date_fmt)
     #else df$start_date[idx]
     ann_x <- if (!is.null(target_date)) coerce_date(target_date, fmt = target_date_fmt)

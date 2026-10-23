@@ -4,16 +4,17 @@ library(dplyr)
 
 
 
-nms <- c("bc_total", #"bc_rbk", "bc_rl4",
-         #"bc_rna", "bc_rxk", "bc_other",
-         "bsol_total"#,
-         # "bsol_rrk",
-         # "bsol_rq3"
-         # , "bsol_rrj", "bsol_ryw", "bsol_other"
+nms <- c("bc_total", "bc_rbk", "bc_rl4",
+         "bc_rna", "bc_rxk", "bc_other",
+         "bsol_total",
+          "bsol_rrk",
+          "bsol_rq3"
+          , "bsol_rrj", "bsol_ryw", "bsol_other"
+         #"rxk_total"
 )
 
 
-base_dir <- "output/diagnostics3"
+base_dir <- "output/oct19_demoonly"
 #base_dir <- "output/base_model2"
 
 csv_files <- paste0(base_dir,"/", nms, "_long.csv")
@@ -63,14 +64,17 @@ out <-
            capacity_do_nothing = ceiling(Removals * weeks),
 
            predicted_demand = round(Referrals * weeks) ,
-           ICB = ifelse(file_id == 1, "BC", "BSOL"),  # Added for diagnostics
-           #ICB = ifelse(Commissioner_Code == "D2P2L", "BC", "BSOL"),
+           #ICB = ifelse(file_id == 1, "BC", "BSOL"),  # Added for diagnostics
+           ICB = ifelse(Commissioner_Code == "D2P2L", "BC", "BSOL"),
            Provider = provider_code ) |>
     mutate(capacity_difference = capacity_relief - capacity_do_nothing,
            start_date = as.Date(start_date),
            end_date = as.Date(end_date)) |>
 
-    select(ICB, Provider, DiagnosticProcedure, start_date, end_date,
+    select(ICB,
+           Provider, #DiagnosticProcedure,
+           Specialty,
+           start_date, end_date,
            `Demand (predicted)` = predicted_demand,
            `Capacity (do nothing)` = capacity_do_nothing,
            `Waiting list size (do nothing)` = Waiting.list.size,
@@ -86,7 +90,7 @@ out <-
 
 
 
-fwrite(out, "output/diagnostics3/model_summary2.csv")
+fwrite(out, "output/oct19_demoonly/model_summary_demoonly.csv")
 #fwrite(out, "output/base_model2/model_output_20260826.csv")
 
 #
